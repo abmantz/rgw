@@ -4,7 +4,13 @@ This package implements in [R](https://www.r-project.org/)  the affine-invariant
 
 This R implementation is based on the very clear description given by [Foreman-Mackey et al. (2012)](https://arxiv.org/abs/1202.3665), who provide an implementation [in python](http://dan.iel.fm/emcee).
 
-## Installation (Linux/Unix/Mac)
+## Installation
+
+### From CRAN
+
+In R, run ```install.packages("rgw")```.
+
+### Manually (Linux/Unix/Mac)
 
 1. Clone this repository.
 2. In a terminal, navigate to the ```<repository base>/R/```.
