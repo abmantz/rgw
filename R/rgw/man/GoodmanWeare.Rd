@@ -38,7 +38,7 @@ additional arguments to pass to lnpost.
 A list containing $ensemble: an array of the same dimensionality as ensemble, containing the position of the walkers after Nsteps iterations of the sampler; and $current.lnP: the  log-posterior density for each walker.
 }
 \references{
-Goodman, J. & Weare, J. (2010; Comm. App. Math. Comp. Sci., 5:6; doi:10.2140/camcos.2010.5.65). This implementation is based on the description given by Foreman-Mackey et al. (2012; arXiv:1202.3665; doi:10.1086/670067).
+Goodman, J. & Weare, J. (2010, Comm. App. Math. Comp. Sci., 5:6) <DOI:10.2140/camcos.2010.5.65>. This implementation is based on the description given by Foreman-Mackey et al. (2012, arXiv:1202.3665) <DOI:10.1086/670067>.
 }
 \author{
 Adam Mantz
