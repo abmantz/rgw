@@ -1,0 +1,4 @@
+importFrom("stats", "runif")
+importFrom("parallel", "mclapply")
+export(GoodmanWeare)
+export(GoodmanWeare.rem)
