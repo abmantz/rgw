@@ -8,7 +8,7 @@ This R implementation is based on the very clear description given by [Foreman-M
 
 ### From CRAN
 
-In R, run ```install.packages("rgw")```.
+In R, run ```install.packages("rgw")```. Note that the version hosted on CRAN may lag behind this one (see [VERSION.md](VERSION.md)).
 
 ### Manually (Linux/Unix/Mac)
 

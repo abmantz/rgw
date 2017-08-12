@@ -9,7 +9,7 @@ Produces a Monte-Carlo Markov ensemble using the affine-invariant method of Good
 }
 \usage{
 GoodmanWeare.rem(post, lnpost, thin=1, mention.every=NA,
- save.every=NA, save.file=NA, ...)
+ save.every=NA, save.file=NA, return.lnpost=FALSE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -31,6 +31,9 @@ save the accumulated Markov ensemble to disk every time this many iterations are
   \item{save.file}{
 filename for saving progress.
 }
+  \item{return.lnpost}{
+whether to return log-posterior values for each sample; see Value.
+}
   \item{...}{
 additional arguments to pass to GoodmanWeare or lnpost.
 }
@@ -38,10 +41,10 @@ additional arguments to pass to GoodmanWeare or lnpost.
 %\details{
 %}
 \value{
-An array of the same dimensionality as post, storing the position of the walkers in post[,,i] every thin iterations.
+If return.lnpost==FALSE, an array of the same dimensionality as post, storing the position of the walkers in post[,,i] every thin iterations. Otherwise, a list containing that array as $post, as well as an Nwalkers*Nsteps array storing the corresponding log-posterior values as $lnP. The log-posterior values $lnP[,1], corresponding with the starting ensemble positions $post[,,1], will always be NA.
 }
 \references{
-See help for GoodmanWeare.
+See also help for rgw::GoodmanWeare.
 }
 \author{
 Adam Mantz
@@ -61,7 +64,8 @@ By default, the code will attempt to run in parallel (see the `parallel' package
 # Define the log-posterior function
 lnP = function(x) sum( dnorm(x, c(0,1), c(pi, exp(0.5)), log=TRUE) )
 
-# Initialize an ensemble of 100 walkers. We'll take 100 steps, saving the ensemble after each.
+# Initialize an ensemble of 100 walkers. We'll take 100 steps, saving the
+# ensemble after each.
 nwalk = 100
 post = array(NA, dim=c(2, nwalk, 101))
 post[1,,1] = rnorm(nwalk, 0, 0.1)

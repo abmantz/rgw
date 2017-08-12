@@ -41,16 +41,21 @@ GoodmanWeare = function(ensemble, lnpost, Nsteps, current.lnP=NULL, mc.cores=get
   list(ensemble=ensemble, current.lnP=current.lnP)
 }
 
-GoodmanWeare.rem = function(post, lnpost, thin=1, mention.every=NA, save.every=NA, save.file=NA, ...) {
-  ## post should be an Nparam*Nwalkers*Nsteps array with the initial walker positions
-  ## set in post[,,1]. The ensemble will be saved in post[,,i] every thin
-  ## iterations until post is filled.
-  res = list()
-  for (i in 2:dim(post)[3]) {
-    res = GoodmanWeare(post[,,i-1], lnpost, thin, res$current.lnP, ...)
-    post[,,i] = res$ensemble
-    if (!is.na(mention.every) & i %% mention.every == 0) message(paste('Finished iteration', i))
-    if (!is.na(save.every) & !is.na(save.file) & i %% save.every == 0) save(post, file=save.file)
-  }
-  post
+GoodmanWeare.rem = function(post, lnpost, thin=1, mention.every=NA, save.every=NA, save.file=NA, return.lnpost=FALSE, ...) {
+    ## post should be an Nparam*Nwalkers*Nsteps array with the initial walker positions
+    ## set in post[,,1]. The ensemble will be saved in post[,,i] every thin
+    ## iterations until post is filled.
+    ## If return.lnpost==TRUE, post and an array of log-posteriors are returned in a list.
+    ## Otherwise, only post is returned.
+    res = list()
+    lnp = array(NA, dim=dim(post)[2:3])
+    for (i in 2:dim(post)[3]) {
+        res = GoodmanWeare(post[,,i-1], lnpost, thin, res$current.lnP, ...)
+        post[,,i] = res$ensemble
+        lnp[,i] = res$current.lnP
+        if (!is.na(mention.every) & i %% mention.every == 0) message(paste('Finished iteration', i))
+        if (!is.na(save.every) & !is.na(save.file) & i %% save.every == 0) save(post, file=save.file)
+    }
+    if (return.lnpost) post = list(post=post, lnP=lnp)
+    post
 }
