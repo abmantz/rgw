@@ -1,3 +1,6 @@
+<a href="https://cran.r-project.org/package=rgw"><img src="https://img.shields.io/cran/v/rgw.svg" alt="CRAN" /></a>
+<a href="https://raw.githubusercontent.com/abmantz/rgw/master/LICENSE"><img src="https://img.shields.io/cran/l/rgw.svg" alt="MIT License" /></a>
+
 # rgw
 
 This package implements in [R](https://www.r-project.org/)  the affine-invariant sampling method of [Goodman & Weare (2010)](http://dx.doi.org/10.2140/camcos.2010.5.65). This is a way of producing Monte-Carlo samples from a target distribution, which can be used for statistical inference.
@@ -45,4 +48,11 @@ plot(post[2,1,])
 
 ## Help
 
-Use the [issues](https://github.com/abmantz/rgw/issues).
+Open an [issue](https://github.com/abmantz/rgw/issues).
+
+## History
+
+Version | Comments
+:-----: | --------
+0.2.0   | Added options for plotting traces periodically during the run
+0.1.0   | First release --> CRAN
