@@ -71,7 +71,7 @@ By default, the code will attempt to run in parallel (see the `parallel'
 package). To prevent this, pass mc.cores=1.
 
 If traces are being plotted (show.every not NA),
-par(mfrow=c(length(show.params), 1)) called on the current graphics
+par(mfrow=c(length(show.params), 1)) is called on the current graphics
 device.
 }
 
