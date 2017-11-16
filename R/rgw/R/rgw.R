@@ -41,16 +41,26 @@ GoodmanWeare = function(ensemble, lnpost, Nsteps, current.lnP=NULL, mc.cores=get
   list(ensemble=ensemble, current.lnP=current.lnP)
 }
 
-GoodmanWeare.rem = function(post, lnpost, thin=1, mention.every=NA, save.every=NA, save.file=NA, ...) {
+GoodmanWeare.rem = function(post, lnpost, thin=1, mention.every=NA, save.every=NA, save.file=NA, show.every=NA, show.params=1:dim(post)[1], show.walkers=min(dim(post)[2],8), show.pch1=1, show.pch2='.', show.pch.switch=500, ...) {
   ## post should be an Nparam*Nwalkers*Nsteps array with the initial walker positions
   ## set in post[,,1]. The ensemble will be saved in post[,,i] every thin
   ## iterations until post is filled.
   res = list()
+  if (!is.na(show.every)) {
+    par(mfrow=c(length(show.params), 1))
+  }
   for (i in 2:dim(post)[3]) {
     res = GoodmanWeare(post[,,i-1], lnpost, thin, res$current.lnP, ...)
     post[,,i] = res$ensemble
     if (!is.na(mention.every) & i %% mention.every == 0) message(paste('Finished iteration', i))
     if (!is.na(save.every) & !is.na(save.file) & i %% save.every == 0) save(post, file=save.file)
+    if (!is.na(show.every) & i %% show.every == 0) {
+      if (i < show.pch.switch) pch = show.pch1 else pch = show.pch2
+      for (j in show.params) {
+        plot(post[j,1,1:i], ylab=paste('parameter', j), pch=pch, col=1+1)
+        if (show.walkers > 1) for (k in 2:show.walkers) points(post[j,k,1:i], pch=pch, col=1+k)
+      }
+    }
   }
   post
 }
