@@ -12,8 +12,8 @@ This package implements the affine-invariant method of Goodman & Weare (2010) <D
 \tabular{ll}{
 Package: \tab rgw\cr
 Type: \tab Package\cr
-Version: \tab 0.1.0\cr
-Date: \tab 2016-10-10\cr
+Version: \tab 0.2.0\cr
+Date: \tab 2017-11-16\cr
 License: \tab MIT\cr
 LazyLoad: \tab yes\cr
 }

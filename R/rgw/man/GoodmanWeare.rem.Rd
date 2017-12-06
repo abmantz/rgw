@@ -9,7 +9,9 @@ Produces a Monte-Carlo Markov ensemble using the affine-invariant method of Good
 }
 \usage{
 GoodmanWeare.rem(post, lnpost, thin=1, mention.every=NA,
- save.every=NA, save.file=NA, ...)
+ save.every=NA, save.file=NA, show.every=NA,
+ show.params=1:dim(post)[1], show.walkers=min(dim(post)[2],8),
+ show.pch1=1, show.pch2='.', show.pch.switch=500, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -31,8 +33,26 @@ save the accumulated Markov ensemble to disk every time this many iterations are
   \item{save.file}{
 filename for saving progress.
 }
+  \item{show.every}{
+plot parameter traces so far to the active graphics device periodically.
+}
+  \item{show.params}{
+(sub)set of parameter traces to plot (default is to show all).
+}
+  \item{show.walkers}{
+which walkers to plot traces of (default is first 8).
+}
+  \item{show.pch1}{
+plot symbol to use for short chains.
+}
+  \item{show.pch2}{
+plot symbol to use for long chains.
+}
+  \item{show.pch.switch}{
+chain length that distinguishes "short" and "long" chains for plotting purposes.
+}
   \item{...}{
-additional arguments to pass to GoodmanWeare or lnpost.
+additional named arguments to pass to GoodmanWeare or lnpost.
 }
 }
 %\details{
@@ -47,7 +67,12 @@ See help for GoodmanWeare.
 Adam Mantz
 }
 \note{
-By default, the code will attempt to run in parallel (see the `parallel' package). To prevent this, pass mc.cores=1.
+By default, the code will attempt to run in parallel (see the `parallel'
+package). To prevent this, pass mc.cores=1.
+
+If traces are being plotted (show.every not NA),
+par(mfrow=c(length(show.params), 1)) is called on the current graphics
+device.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
