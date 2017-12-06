@@ -1,3 +1,4 @@
+<a href="http://ascl.net/1711.006"><img src="https://img.shields.io/badge/ascl-1711.006-blue.svg?colorB=262255" alt="ascl:1711.006" /></a>
 <a href="https://cran.r-project.org/package=rgw"><img src="https://img.shields.io/cran/v/rgw.svg" alt="CRAN" /></a>
 <a href="https://raw.githubusercontent.com/abmantz/rgw/master/LICENSE"><img src="https://img.shields.io/cran/l/rgw.svg" alt="MIT License" /></a>
 
