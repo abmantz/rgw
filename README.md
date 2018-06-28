@@ -50,10 +50,3 @@ plot(post[2,1,])
 ## Help
 
 Open an [issue](https://github.com/abmantz/rgw/issues).
-
-## History
-
-Version | Comments
-:-----: | --------
-0.2.0   | Added options for plotting traces periodically during the run
-0.1.0   | First release --> CRAN
