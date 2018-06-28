@@ -1,7 +1,7 @@
 Package: rgw
 Type: Package
 Title: Goodman-Weare Affine-Invariant Sampling
-Version: 0.2.0
+Version: 0.3.0
 Date: 2017-08-11
 Author: Adam Mantz
 Maintainer: Adam Mantz <amantz@slac.stanford.edu>
