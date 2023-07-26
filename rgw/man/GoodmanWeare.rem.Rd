@@ -29,7 +29,8 @@ thinning factor for saving the results.
 print a message to the console every time this many iterations are completed.
 }
   \item{save.every}{
-save the accumulated Markov ensemble to disk every time this many iterations are completed.
+save the accumulated Markov ensemble to disk every time this many
+iterations are completed, in a variable called `post`. See `Value`, below.
 }
   \item{save.file}{
 filename for saving progress.
@@ -76,7 +77,8 @@ package). To prevent this, pass mc.cores=1.
 
 If traces are being plotted (show.every not NA),
 par(mfrow=c(length(show.params), 1)) is called on the current graphics
-device.
+device. If the device is not large enough to show all of the traces,
+this will cause a crash.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

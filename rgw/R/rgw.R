@@ -57,7 +57,15 @@ GoodmanWeare.rem = function(post, lnpost, thin=1, mention.every=NA, save.every=N
     post[,,i] = res$ensemble
     lnp[,i] = res$current.lnP
     if (!is.na(mention.every) & i %% mention.every == 0) message(paste('Finished iteration', i))
-    if (!is.na(save.every) & !is.na(save.file) & i %% save.every == 0) save(post, file=save.file)
+    if (!is.na(save.every) & !is.na(save.file) & i %% save.every == 0) {
+        if (return.lnpost) {
+            post = list(post=post, lnP=lnp)
+            save(post, file=save.file)
+            post = post$post
+        } else {
+            save(post, file=save.file)
+        }
+    }
     if (!is.na(show.every) & i %% show.every == 0) {
       if (i < show.pch.switch) pch = show.pch1 else pch = show.pch2
       for (j in show.params) {
